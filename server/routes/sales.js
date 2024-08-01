@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addData, getData } = require("../lib/salesData");
+const { addData } = require("../lib/salesData");
 const { broadcastData } = require("../utils/websocket"); // Import broadcastData
 
 

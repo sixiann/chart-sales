@@ -1,24 +1,25 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
+const maxDays = 10;
 
 export default function Home() {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://localhost:5000');
+    const socket = new WebSocket("ws://localhost:5000");
 
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      setChartData(message.data);
+      let newChartData = message.data;
+      while (newChartData.length > maxDays) {
+        newChartData.shift(); 
+      }
+      setChartData(newChartData);
     };
 
     socket.onclose = () => {
-      console.log('WebSocket connection closed');
+      console.log("WebSocket connection closed");
     };
-
-    // return () => {
-    //   socket.close();
-    // };
   }, []);
 
   return (
