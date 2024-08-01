@@ -8,10 +8,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  TimeScale
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import 'chartjs-adapter-date-fns';
 
 ChartJS.register(
   CategoryScale,
@@ -20,8 +18,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
-  TimeScale
+  Legend
 );
 
 export const options = {
@@ -30,7 +27,6 @@ export const options = {
     mode: 'index',
     intersect: false,
   },
-  stacked: false,
   plugins: {
     title: {
       display: true,
@@ -39,18 +35,10 @@ export const options = {
   },
   scales: {
     x: {
-      type: 'time',
-      time: {
-        unit: 'day',
-      },
+      type: 'category', // Use category scale for x-axis
       title: {
         display: true,
         text: 'Date',
-      },
-      ticks: {
-        source: 'data', // Use the data labels as ticks
-        maxRotation: 0, // No rotation for x-axis labels
-        minRotation: 0, // No rotation for x-axis labels
       },
     },
     y: {
@@ -63,24 +51,33 @@ export const options = {
       },
     },
   },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        label: function (context) {
+          return `${context.label}: ${context.raw} sales`;
+        },
+      },
+    },
+  },
 };
 
-export default function LineChart({ salesData = [] }) { 
-  const labels = salesData.map(item => item.date);
-  const datasetData = salesData.map(item => ({
-    x: item.date,
-    y: item.numSales
-  }));
+export default function LineChart({ chartData = [] }) {
+  // Sort sales data by date from oldest to most recent
+  const sortedData = [...chartData].sort((a, b) => new Date(a.date) - new Date(b.date));
 
+  // Prepare data for the chart
   const data = {
-    labels: labels, 
+    labels: sortedData.map(item => item.date), // Dates as labels for x-axis
     datasets: [
       {
         label: 'Number of Sales',
-        data: datasetData,
+        data: sortedData.map(item => ({
+          x: item.date, // Dates as x-axis values
+          y: item.numSales,
+        })),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
       },
     ],
   };

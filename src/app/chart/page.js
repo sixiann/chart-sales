@@ -27,14 +27,7 @@ export default function Home() {
   return (
     <div>
       <h2>Live Sales Data</h2>
-      <LineChart salesData={chartData}/>
-      <ul>
-        {chartData.map((dataPoint, index) => (
-          <li key={index}>
-            Date: {dataPoint.date}, Number of Sales: {dataPoint.numSales}
-          </li>
-        ))}
-      </ul>
+      <LineChart chartData={chartData}/>
     </div>
   );
 }
