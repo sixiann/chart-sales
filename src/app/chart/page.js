@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import LineChart from "./LineChart";
 const maxDays = 10;
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         newChartData.shift(); 
       }
       setChartData(newChartData);
+      console.log(chartData);
     };
 
     socket.onclose = () => {
@@ -25,6 +27,7 @@ export default function Home() {
   return (
     <div>
       <h2>Live Sales Data</h2>
+      <LineChart salesData={chartData}/>
       <ul>
         {chartData.map((dataPoint, index) => (
           <li key={index}>
