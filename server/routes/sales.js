@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { addData, getData } = require("../lib/salesData");
+const { broadcastData } = require("../utils/websocket"); // Import broadcastData
+
 
 function validateSalesData(salesData) {
-  console.log("received");
-  console.log(salesData);
   const { date, numSales } = salesData;
 
   if (!date || new Date(date) > new Date()) {
@@ -22,14 +22,12 @@ router.post("/", (req, res) => {
   const salesData = req.body.salesData;
 
   const validationError = validateSalesData(salesData);
-  console.log(validationError);
-
   if (validationError) {
     return res.status(400).json({ message: validationError });
   }
 
   addData(salesData);
-  console.log(getData());
+  broadcastData(); 
   res.status(200).json({ message: "Sales data received", data: salesData });
 });
 
