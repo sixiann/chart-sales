@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,8 +8,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 ChartJS.register(
   CategoryScale,
@@ -18,69 +20,85 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartDataLabels
 );
 
-export const options = {
+export const options = (showLocation, locations) => ({
   responsive: true,
   interaction: {
-    mode: 'index',
+    mode: "index",
     intersect: false,
   },
   plugins: {
     title: {
       display: true,
-      text: 'Sales Data Line Chart',
+      text: "Sales Data Line Chart",
     },
+    datalabels: {
+        display: showLocation,
+        formatter: (_, context) => {
+            const dataIndex = context.dataIndex;
+            return locations[dataIndex];
+          },
+        align: 'top',
+        color: 'black',
+        font: {
+          weight: 'bold',
+        },
+      },
   },
   scales: {
     x: {
-      type: 'category', // Use category scale for x-axis
+      type: "category",
       title: {
         display: true,
-        text: 'Date',
+        text: "Date",
       },
     },
     y: {
-      type: 'linear',
+      type: "linear",
       display: true,
-      position: 'left',
+      position: "left",
       title: {
         display: true,
-        text: 'Number of Sales',
+        text: "Number of Sales",
       },
     },
   },
-  plugins: {
-    tooltip: {
-      callbacks: {
-        label: function (context) {
-          return `${context.label}: ${context.raw} sales`;
-        },
-      },
-    },
-  },
-};
+});
 
 export default function LineChart({ chartData = [] }) {
+  const [showLocation, setShowLocation] = useState(true);
+
   // Sort sales data by date from oldest to most recent
-  const sortedData = [...chartData].sort((a, b) => new Date(a.date) - new Date(b.date));
+  const sortedData = [...chartData].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
 
   // Prepare data for the chart
   const data = {
-    labels: sortedData.map(item => item.date), // Dates as labels for x-axis
+    labels: sortedData.map((item) => item.date), // Dates as labels for x-axis
     datasets: [
       {
-        label: 'Number of Sales',
-        data: sortedData.map(item => ({
+        label: "Number of Sales",
+        data: sortedData.map((item) => ({
           x: item.date, // Dates as x-axis values
           y: item.numSales,
         })),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
+  const locations = sortedData.map(item => item.location);
 
-  return <Line options={options} data={data} />;
+  return (
+    <div>
+      <button onClick={() => setShowLocation(!showLocation)}>
+        {showLocation ? "Hide Location" : "Show Location"}
+      </button>
+      <Line options={options(showLocation, locations)} data={data} />
+    </div>
+  );
 }

@@ -16,7 +16,6 @@ export default function Home() {
         newChartData.shift(); 
       }
       setChartData(newChartData);
-      console.log(chartData);
     };
 
     socket.onclose = () => {
