@@ -86,8 +86,8 @@ export default function LineChart({ chartData = [], showLocation}) {
           x: item.date, // Dates as x-axis values
           y: item.numSales,
         })),
-        borderColor: "#b5663b",
-        backgroundColor: "#67402d",
+        borderColor: "#2ee2d1",
+        backgroundColor: "#26BAAC",
       },
     ],
   };

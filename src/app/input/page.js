@@ -30,7 +30,7 @@ export default function Home() {
         <span className="ml-1 text-lg font-medium">Back</span>
       </div>
 
-      <div className="w-[90%] sm:w-[460px] py-10 px-9 rounded-lg shadow-lg bg-secondary text-center text-text mt-4">
+      <div className="w-[90%] sm:w-[460px] py-10 px-9 rounded-lg shadow-lg bg-primary text-center text-text mt-4">
         {!isSubmit ? (
           <InputForm setIsSubmit={setIsSubmit} />
         ) : (

@@ -7,7 +7,7 @@ const SubmittedForm = ({setIsSubmit}) => {
             <Heading className="py-3">Success!</Heading>
             
             <button 
-                className="px-5 mt-6 h-10 rounded-md font-semibold leading-none bg-background text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out"
+                className="px-5 mt-6 h-10 rounded-md font-semibold leading-none bg-background text-shadow focus:outline-none hover:bg-teal-500 transition duration-200 ease-in-out"
                 onClick={()=>setIsSubmit(false)}>
                 Add another sale
             </button>

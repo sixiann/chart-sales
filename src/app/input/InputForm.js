@@ -2,6 +2,8 @@ import * as Form from "@radix-ui/react-form";
 import axios from "axios";
 import { Heading } from "@radix-ui/themes"
 
+const bearer = "123abc";
+
 const InputForm = ({setIsSubmit}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,7 +21,7 @@ const InputForm = ({setIsSubmit}) => {
       const response = await axios.post("http://localhost:5000/api/sales", data, {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer 123abc",
+          "Authorization": `Bearer ${bearer}`,
         },
       });
 
@@ -108,7 +110,7 @@ const InputForm = ({setIsSubmit}) => {
       <Form.Submit asChild>
         <button
           type="submit"
-          className="w-full mt-7 h-10 rounded-md font-semibold leading-none bg-background text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out"
+          className="bg-background hover:bg-teal-500 w-full mt-7 h-10 rounded-md font-semibold leading-none focus:outline-none transition duration-200 ease-in-out"
         >
           Submit
         </button>

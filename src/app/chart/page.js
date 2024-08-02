@@ -35,7 +35,7 @@ export default function Home() {
           Live Sales
         </Heading>
         <button
-          className="px-5 h-10 rounded-md font-semibold leading-none bg-secondary text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out hidden sm:block"
+          className="px-5 h-10 rounded-md font-semibold leading-none bg-primary text-shadow focus:outline-none focus:bg-accent hover:bg-secondary transition duration-200 ease-in-out hidden sm:block"
           onClick={() => (window.location.href = "/input")}
         >
           Add a sale
