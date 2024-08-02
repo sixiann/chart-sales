@@ -12,7 +12,6 @@ export default function Home() {
         onClick={() => (window.location.href = "/chart")}
         className="flex items-center absolute top-0 left-0 ml-4 mt-4 hover:cursor-pointer hover:text-teal-600 transition duration-200 ease-in-out"
       >
-
         {/* back button */}
         <svg
           width="40"

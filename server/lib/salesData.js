@@ -11,16 +11,16 @@ function getData() {
 }
 
 const initialData = [
-  { date: '2023-11-01', numSales: 10, location: 'locationA' },
-  { date: '2023-11-02', numSales: 20, location: 'locationB' },
-  { date: '2023-11-03', numSales: 30, location: 'locationA' },
-  { date: '2023-11-04', numSales: 40, location: 'locationB' },
-  { date: '2023-11-05', numSales: 50, location: 'locationA' },
-  { date: '2023-11-06', numSales: 60, location: 'locationB' },
-  { date: '2023-11-07', numSales: 70, location: 'locationA' },
-  { date: '2023-11-08', numSales: 80, location: 'locationB' },
-  { date: '2023-11-09', numSales: 90, location: 'locationA' },
-  { date: '2023-11-10', numSales: 100, location: 'locationB' }
+  { date: "2023-11-01", numSales: 420, location: "locationA" },
+  { date: "2023-11-02", numSales: 300, location: "locationB" },
+  { date: "2023-11-03", numSales: 200, location: "locationA" },
+  { date: "2023-11-04", numSales: 300, location: "locationB" },
+  { date: "2023-11-05", numSales: 100, location: "locationA" },
+  { date: "2023-11-06", numSales: 130, location: "locationB" },
+  { date: "2023-11-07", numSales: 90, location: "locationA" },
+  { date: "2023-11-08", numSales: 120, location: "locationB" },
+  { date: "2023-11-09", numSales: 240, location: "locationA" },
+  { date: "2023-11-10", numSales: 350, location: "locationB" },
 ];
 
 initialData.forEach((entry) => addData(entry));

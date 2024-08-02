@@ -1,13 +1,13 @@
 # Sales Data Dashboard
 
-This project is a full-stack application that displays a line chart of sales data by date, broken down by location. It receives live data through a WebSocket connection and includes functionality to toggle location visibility. The app ensures that only the last 10 days of data are displayed, replacing the oldest data when new data is received.
+This project is a full-stack application that displays a line chart of sales data by date, broken down by location. It receives live data through a WebSocket connection and includes functionality to toggle location visibility. The app ensures that only the last 10 points of data received are displayed, dropping the oldest inserted data when new data is received. If data for an existing day is received, it will be replaced with the new data, but if it is not in the most recently added 10 points of data, the change will not show up on the live chart.
 
 ## Features
 - Display live sales data on a line chart.
 - Toggle visibility of sales data locations.
-- FIFO mechanism to keep only the last 10 days of data.
+- FIFO mechanism on frontend to keep only the last 10 points of sales data received. 
 - Backend Express server with data ingestion and validation.
-- Authentication middleware for secure data submission.
+- Authentication middleware for secure data submission. 
 - Form for data input with validation.
 
 ## Tech Stack
@@ -25,7 +25,7 @@ This project is a full-stack application that displays a line chart of sales dat
 1. Clone the repository:
     ```bash
     git clone https://github.com/sixiann/chart-sales.git
-    cd sales-data-dashboard/backend
+    cd chart-sales
     ```
 
 2. Install dependencies:
@@ -55,7 +55,7 @@ This project is a full-stack application that displays a line chart of sales dat
 ### POST /sales
 
 - **Description**: Ingest sales data.
-- **Authentication**: Bearer token `123abc`.
+- **Authentication**: Bearer token `123abc`. For the purposes of the demo, the bearer token is included in API requests from the frontend.
 - **Request Body**:
     ```json
     {

@@ -20,16 +20,12 @@ const InputForm = ({ setIsSubmit }) => {
     };
 
     try {
-      const response = await axios.post(
-        `${serverUrl}/api/sales`,
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${bearer}`,
-          },
-        }
-      );
+      const response = await axios.post(`${serverUrl}/api/sales`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${bearer}`,
+        },
+      });
       setIsSubmit(true);
     } catch (error) {
       console.error("Error submitting data:", error);
@@ -38,7 +34,7 @@ const InputForm = ({ setIsSubmit }) => {
 
   return (
     <Form.Root onSubmit={handleSubmit}>
-      <Heading>Add sales</Heading>
+      <Heading>Add/update sale</Heading>
 
       {/* Date field */}
       <Form.Field className="grid mb-2.5" name="date">

@@ -33,9 +33,9 @@ export default function Home() {
           Live Sales
         </Heading>
         <Button
-        className="hidden sm:block"
-        text="Add a sale"
-        handleClick={() => (window.location.href = "/input")}
+          className="hidden sm:block"
+          text="Add a sale"
+          handleClick={() => (window.location.href = "/input")}
         />
       </div>
 
@@ -48,7 +48,7 @@ export default function Home() {
         className="block sm:hidden mt-3"
         text="Add a sale"
         handleClick={() => (window.location.href = "/input")}
-        />
+      />
     </div>
   );
 }

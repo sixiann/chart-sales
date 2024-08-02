@@ -3,7 +3,6 @@ const router = express.Router();
 const { addData } = require("../lib/salesData");
 const { broadcastData } = require("../utils/websocket"); // Import broadcastData
 
-
 function validateSalesData(salesData) {
   const { date, numSales } = salesData;
 
@@ -26,9 +25,9 @@ router.post("/", (req, res) => {
     return res.status(400).json({ message: validationError });
   }
 
-  addData(salesData); 
-  broadcastData(); //broadcast the change to websocket clients 
-  
+  addData(salesData);
+  broadcastData(); //broadcast the change to websocket clients
+
   res.status(200).json({ message: "Sales data received", data: salesData });
 });
 
