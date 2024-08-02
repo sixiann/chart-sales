@@ -1,5 +1,6 @@
 import * as Form from "@radix-ui/react-form";
 import axios from "axios";
+import { Heading } from "@radix-ui/themes"
 
 const InputForm = ({setIsSubmit}) => {
   const handleSubmit = async (event) => {
@@ -30,9 +31,8 @@ const InputForm = ({setIsSubmit}) => {
   };
 
   return (
-    <Form.Root className="w-[90%] sm:w-[460px] py-10 px-9 rounded-lg shadow-lg bg-secondary text-center text-text" onSubmit={handleSubmit}>
-      <h1 className="text-2xl font-bold">Add sales</h1>
-
+    <Form.Root onSubmit={handleSubmit}>
+      <Heading>Add sales</Heading>
       <Form.Field className="grid mb-2.5" name="date">
         <div className="flex items-baseline justify-between">
           <Form.Label className="font-medium leading-[35px]">Date</Form.Label>
