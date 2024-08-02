@@ -7,7 +7,7 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  // Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -20,7 +20,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  // Legend,
   ChartDataLabels
 );
 
@@ -31,10 +31,6 @@ export const options = (showLocation, locations) => ({
     intersect: false,
   },
   plugins: {
-    title: {
-      display: true,
-      text: "Sales Data Line Chart",
-    },
     datalabels: {
         display: showLocation,
         formatter: (_, context) => {
@@ -54,6 +50,9 @@ export const options = (showLocation, locations) => ({
       title: {
         display: true,
         text: "Date",
+        font:{
+          weight: 'bold',
+        }
       },
     },
     y: {
@@ -63,6 +62,9 @@ export const options = (showLocation, locations) => ({
       title: {
         display: true,
         text: "Number of Sales",
+        font:{
+          weight: 'bold',
+        }
       },
     },
   },
@@ -84,16 +86,16 @@ export default function LineChart({ chartData = [], showLocation}) {
           x: item.date, // Dates as x-axis values
           y: item.numSales,
         })),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "#b5663b",
+        backgroundColor: "#67402d",
       },
     ],
   };
   const locations = sortedData.map(item => item.location);
 
   return (
-    <div>
-      <Line options={options(showLocation, locations)} data={data} />
-    </div>
+      <Line 
+      options={options(showLocation, locations)} 
+      data={data} />
   );
 }

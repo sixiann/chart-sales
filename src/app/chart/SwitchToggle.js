@@ -2,10 +2,9 @@ import * as Switch from "@radix-ui/react-switch";
 
 export default function SwitchToggle({ showLocation, setShowLocation }) {
   return (
-    // <form>
-    <div className="flex items-center">
+    <div className="flex items-center mt-3">
       <label
-        className="text-black text-md leading-none pr-4"
+        className="text-text text-md font-semibold pr-2"
         htmlFor="show-location"
       >
         Show location
@@ -18,6 +17,5 @@ export default function SwitchToggle({ showLocation, setShowLocation }) {
         <Switch.Thumb className="block w-5 h-5 bg-white rounded-full shadow transform transition-transform duration-100 data-[state=unchecked]:translate-x-0 data-[state=checked]:translate-x-4" />
       </Switch.Root>
     </div>
-    // </form>
   );
 }

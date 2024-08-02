@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import LineChart from "./LineChart";
 import SwitchToggle from "./SwitchToggle";
+import { Heading } from "@radix-ui/themes";
+
 const maxDays = 10;
 
 export default function Home() {
@@ -27,16 +29,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <h2>Live Sales Data</h2>
-      <SwitchToggle
-        showLocation={showLocation}
-        setShowLocation={setShowLocation}
-      />
-
+    <div className="bg-background h-screen px-5 lg:px-40 flex flex-col justify-center items-center">
+      <Heading size="8" className="mb-3">Live Sales Data</Heading>
       <LineChart 
         chartData={chartData} 
         showLocation={showLocation} 
+      />
+      <SwitchToggle
+        showLocation={showLocation}
+        setShowLocation={setShowLocation}
       />
     </div>
   );
