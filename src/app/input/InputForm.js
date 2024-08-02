@@ -97,10 +97,10 @@ const InputForm = ({setIsSubmit}) => {
             required
           >
             <option value="" disabled>Select a location</option>
-            <option value="locationA">Location A</option>
-            <option value="locationB">Location B</option>
-            <option value="locationC">Location C</option>
-            <option value="locationD">Location D</option>
+            <option value="locationA">LocationA</option>
+            <option value="locationB">LocationB</option>
+            <option value="locationC">LocationC</option>
+            <option value="locationD">LocationD</option>
           </select>
         </Form.Control>
       </Form.Field>
