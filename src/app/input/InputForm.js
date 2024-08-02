@@ -61,13 +61,13 @@ const InputForm = ({setIsSubmit}) => {
         <div className="flex items-baseline justify-between">
           <Form.Label className="text-text font-medium leading-[35px]">Number of Sales</Form.Label>
           <Form.Message className="text-md opacity-80 text-red-600 font-bold" match="valueMissing">
-            Please enter the number of sales
+            Please enter a number
           </Form.Message>
-          <Form.Message className="text-sm opacity-80" match="rangeOverflow">
-            Sales must be less than 500
+          <Form.Message className="text-md opacity-80 text-red-600 font-bold" match="rangeOverflow">
+            Must be between 0 and 500
           </Form.Message>
-          <Form.Message className="text-sm opacity-80" match="rangeUnderflow">
-            Sales must be at least 0
+          <Form.Message className="text-md opacity-80 text-red-600 font-bold" match="rangeUnderflow">
+            Must be between 0 and 500
           </Form.Message>
         </div>
         <Form.Control asChild>
