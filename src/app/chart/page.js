@@ -30,15 +30,30 @@ export default function Home() {
 
   return (
     <div className="bg-background h-screen px-5 lg:px-40 flex flex-col justify-center items-center">
-      <Heading size="8" className="mb-3">Live Sales Data</Heading>
-      <LineChart 
-        chartData={chartData} 
-        showLocation={showLocation} 
-      />
+      <div className="px-5 w-full flex flex-row justify-between items-center">
+        <Heading size="8" className="mb-3">
+          Live Sales
+        </Heading>
+        <button
+          className="px-5 h-10 rounded-md font-semibold leading-none bg-secondary text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out hidden sm:block"
+          onClick={() => (window.location.href = "/input")}
+        >
+          Add a sale
+        </button>
+
+      </div>
+
+      <LineChart chartData={chartData} showLocation={showLocation} />
       <SwitchToggle
         showLocation={showLocation}
         setShowLocation={setShowLocation}
       />
+      <button
+          className="px-5 mt-5 h-10 rounded-md font-semibold leading-none bg-secondary text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out block sm:hidden"
+          onClick={() => (window.location.href = "/input")}
+        >
+          Add a sale
+        </button>
     </div>
   );
 }
