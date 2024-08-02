@@ -10,8 +10,10 @@ export default function Home() {
     <div className="relative flex items-center justify-center min-h-screen bg-background">
       <div
         onClick={() => (window.location.href = "/chart")}
-        className="flex items-center absolute top-0 left-0 ml-4 mt-4 hover:cursor-pointer hover:text-accent transition duration-200 ease-in-out"
+        className="flex items-center absolute top-0 left-0 ml-4 mt-4 hover:cursor-pointer hover:text-teal-600 transition duration-200 ease-in-out"
       >
+
+        {/* back button */}
         <svg
           width="40"
           height="40"
@@ -30,6 +32,7 @@ export default function Home() {
         <span className="ml-1 text-lg font-medium">Back</span>
       </div>
 
+      {/* input form */}
       <div className="w-[90%] sm:w-[460px] py-10 px-9 rounded-lg shadow-lg bg-primary text-center text-text mt-4">
         {!isSubmit ? (
           <InputForm setIsSubmit={setIsSubmit} />

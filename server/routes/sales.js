@@ -26,8 +26,9 @@ router.post("/", (req, res) => {
     return res.status(400).json({ message: validationError });
   }
 
-  addData(salesData);
-  broadcastData(); 
+  addData(salesData); 
+  broadcastData(); //broadcast the change to websocket clients 
+  
   res.status(200).json({ message: "Sales data received", data: salesData });
 });
 

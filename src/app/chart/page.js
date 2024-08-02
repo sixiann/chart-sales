@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Heading } from "@radix-ui/themes";
 import LineChart from "./LineChart";
 import SwitchToggle from "./SwitchToggle";
-import { Heading } from "@radix-ui/themes";
+import Button from "../components/Button";
 
 const maxDays = 10;
 
@@ -13,18 +14,15 @@ export default function Home() {
   //set up websocket to receive charts
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:5000");
-
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data);
+
+      //newChartData is sorted based on insertion order, pop from left to remove earlier data
       let newChartData = message.data;
       while (newChartData.length > maxDays) {
         newChartData.shift();
       }
       setChartData(newChartData);
-    };
-
-    socket.onclose = () => {
-      console.log("WebSocket connection closed");
     };
   }, []);
 
@@ -34,13 +32,11 @@ export default function Home() {
         <Heading size="8" className="mb-3">
           Live Sales
         </Heading>
-        <button
-          className="px-5 h-10 rounded-md font-semibold leading-none bg-primary text-shadow focus:outline-none focus:bg-accent hover:bg-secondary transition duration-200 ease-in-out hidden sm:block"
-          onClick={() => (window.location.href = "/input")}
-        >
-          Add a sale
-        </button>
-
+        <Button
+        className="hidden sm:block"
+        text="Add a sale"
+        handleClick={() => (window.location.href = "/input")}
+        />
       </div>
 
       <LineChart chartData={chartData} showLocation={showLocation} />
@@ -48,12 +44,11 @@ export default function Home() {
         showLocation={showLocation}
         setShowLocation={setShowLocation}
       />
-      <button
-          className="px-5 mt-5 h-10 rounded-md font-semibold leading-none bg-secondary text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out block sm:hidden"
-          onClick={() => (window.location.href = "/input")}
-        >
-          Add a sale
-        </button>
+      <Button
+        className="block sm:hidden mt-3"
+        text="Add a sale"
+        handleClick={() => (window.location.href = "/input")}
+        />
     </div>
   );
 }

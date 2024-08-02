@@ -11,6 +11,7 @@ function setupWebSocket(server) {
   });
 }
 
+//broadcast data updates to all clients
 function broadcastData() {
   wss.clients.forEach((client) => {
     client.send(JSON.stringify({ data: getData() }));
