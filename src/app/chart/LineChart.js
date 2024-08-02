@@ -68,9 +68,7 @@ export const options = (showLocation, locations) => ({
   },
 });
 
-export default function LineChart({ chartData = [] }) {
-  const [showLocation, setShowLocation] = useState(true);
-
+export default function LineChart({ chartData = [], showLocation}) {
   // Sort sales data by date from oldest to most recent
   const sortedData = [...chartData].sort(
     (a, b) => new Date(a.date) - new Date(b.date)
@@ -95,9 +93,6 @@ export default function LineChart({ chartData = [] }) {
 
   return (
     <div>
-      <button onClick={() => setShowLocation(!showLocation)}>
-        {showLocation ? "Hide Location" : "Show Location"}
-      </button>
       <Line options={options(showLocation, locations)} data={data} />
     </div>
   );
