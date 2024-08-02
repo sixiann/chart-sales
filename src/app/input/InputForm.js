@@ -30,26 +30,27 @@ const InputForm = ({setIsSubmit}) => {
   };
 
   return (
-    <Form.Root className="w-[460px] py-10 px-6 rounded-lg shadow-lg" onSubmit={handleSubmit}>
-      {/* Date Field */}
+    <Form.Root className="w-[90%] sm:w-[460px] py-10 px-9 rounded-lg shadow-lg bg-secondary text-center text-text" onSubmit={handleSubmit}>
+      <h1 className="text-2xl font-bold">Add sales</h1>
+
       <Form.Field className="grid mb-2.5" name="date">
         <div className="flex items-baseline justify-between">
-          <Form.Label className="text-base font-medium leading-[35px]">Date</Form.Label>
-          <Form.Message className="text-sm opacity-80" match="valueMissing">
+          <Form.Label className="font-medium leading-[35px]">Date</Form.Label>
+          <Form.Message className="text-md opacity-80 text-red-600 font-bold" match="valueMissing">
             Please select a date
           </Form.Message>
-          <Form.Message className="text-sm opacity-80" match={(value) => {
+          <Form.Message className="text-md opacity-80 text-red-600 font-bold" match={(value) => {
             const today = new Date().toISOString().split("T")[0];
             return value > today;
           }}>
-            Please select a date not in the future
+            Please select a valid date
           </Form.Message>
         </div>
         <Form.Control asChild>
           <input
             type="date"
             name="date"
-            className="w-full h-10 inline-flex items-center justify-center rounded-md text-base placeholder:text-opacity-50 focus:ring-0 focus:outline-none focus:ring-2"
+            className="w-full h-10 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
             required
           />
         </Form.Control>
@@ -58,8 +59,8 @@ const InputForm = ({setIsSubmit}) => {
       {/* Number of Sales Field */}
       <Form.Field className="grid mb-2.5" name="numSales">
         <div className="flex items-baseline justify-between">
-          <Form.Label className="text-base font-medium leading-[35px]">Number of Sales</Form.Label>
-          <Form.Message className="text-sm opacity-80" match="valueMissing">
+          <Form.Label className="text-text font-medium leading-[35px]">Number of Sales</Form.Label>
+          <Form.Message className="text-md opacity-80 text-red-600 font-bold" match="valueMissing">
             Please enter the number of sales
           </Form.Message>
           <Form.Message className="text-sm opacity-80" match="rangeOverflow">
@@ -75,7 +76,7 @@ const InputForm = ({setIsSubmit}) => {
             name="numSales"
             min="0"
             max="500"
-            className="w-full h-10 inline-flex items-center justify-center rounded-md text-base placeholder:text-opacity-50 focus:ring-0 focus:outline-none focus:ring-2"
+            className="w-full h-10 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
             required
           />
         </Form.Control>
@@ -84,15 +85,15 @@ const InputForm = ({setIsSubmit}) => {
       {/* Location Field */}
       <Form.Field className="grid mb-2.5" name="location">
         <div className="flex items-baseline justify-between">
-          <Form.Label className="text-base font-medium leading-[35px]">Location</Form.Label>
-          <Form.Message className="text-sm opacity-80" match="valueMissing">
+        <Form.Label className="text-text font-medium leading-[35px]">Location</Form.Label>
+        <Form.Message className="text-sm opacity-80" match="valueMissing">
             Please select a location
           </Form.Message>
         </div>
         <Form.Control asChild>
           <select
             name="location"
-            className="w-full h-10 inline-flex items-center justify-center rounded-md text-base placeholder:text-opacity-50 focus:ring-0 focus:outline-none focus:ring-2"
+            className="w-full h-10 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
             required
           >
             <option value="" disabled>Select a location</option>
@@ -107,8 +108,7 @@ const InputForm = ({setIsSubmit}) => {
       <Form.Submit asChild>
         <button
           type="submit"
-          className="w-full inline-flex items-center justify-center rounded-md px-4 py-0.5 text-base font-medium leading-none h-[35px] bg-white text-shadow focus:outline-none focus:ring-2"
-          style={{ marginTop: 10 }}
+          className="w-full mt-7 h-10 rounded-md font-semibold leading-none bg-background text-shadow focus:outline-none focus:bg-primary hover:bg-accent transition duration-200 ease-in-out"
         >
           Submit
         </button>
